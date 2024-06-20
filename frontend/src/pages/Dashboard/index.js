@@ -34,6 +34,7 @@ import { grey, blue } from "@material-ui/core/colors";
 import { toast } from "react-toastify";
 
 import Chart from "./Chart";
+import PieChart from './PieChart'; // Verifique o caminho correto do seu componente PieChart
 import ButtonWithSpinner from "../../components/ButtonWithSpinner";
 
 import CardCounter from "../../components/Dashboard/CardCounter";
@@ -125,94 +126,119 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
   card1: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
+    margin: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     height: "100%",
-    //backgroundColor: "palette",
-    //backgroundColor: theme.palette.primary.main,
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
   },
   card2: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
+    margin: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     height: "100%",
-    //backgroundColor: "palette",
-    //backgroundColor: theme.palette.primary.main,
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
   },
   card3: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
+    margin: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     height: "100%",
-  //backgroundColor: theme.palette.primary.main,
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
   },
   card4: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
+    margin: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     height: "100%",
-    //backgroundColor: theme.palette.primary.main,
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
   },
   card5: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
+    margin: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     height: "100%",
-    //backgroundColor: theme.palette.primary.main,
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
   },
   card6: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
+    margin: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     height: "100%",
-    //backgroundColor: theme.palette.primary.main,
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
   },
   card7: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
+    margin: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     height: "100%",
-    //backgroundColor: theme.palette.primary.main,
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
   },
   card8: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
+    margin: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     height: "100%",
-    //backgroundColor: theme.palette.primary.main,
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
   },
   card9: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
+    margin: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     height: "100%",
-    //backgroundColor: theme.palette.primary.main,
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
   },
@@ -413,7 +439,7 @@ const Dashboard = () => {
             <Paper
               className={classes.card1}
               style={{ overflow: "hidden" }}
-              elevation={4}
+              elevation={3}
             >
               <Grid container spacing={3}>
                 <Grid item xs={8}>
@@ -428,6 +454,7 @@ const Dashboard = () => {
                     <Typography
                       component="h1"
                       variant="h4"
+                      style={{textAlign: "center" }}
                     >
                       {counters.supportHappening}
                     </Typography>
@@ -436,7 +463,7 @@ const Dashboard = () => {
                 <Grid item xs={2}>
                   <CallIcon
                     style={{
-                      fontSize: 100,
+                      fontSize: 50,
                       color: "#FFFFFF",
                     }}
                   />
@@ -465,6 +492,7 @@ const Dashboard = () => {
                     <Typography
                       component="h1"
                       variant="h4"
+                      style={{textAlign: "center" }}
                     >
                       {counters.supportPending}
                     </Typography>
@@ -473,7 +501,7 @@ const Dashboard = () => {
                 <Grid item xs={4}>
                   <HourglassEmptyIcon
                     style={{
-                      fontSize: 100,
+                      fontSize: 50,
                       color: "#FFFFFF",
                     }}
                   />
@@ -544,6 +572,7 @@ const Dashboard = () => {
                     <Typography
                       component="h1"
                       variant="h4"
+                      style={{textAlign: "center" }}
                     >
                       {counters.supportFinished}
                     </Typography>
@@ -552,7 +581,7 @@ const Dashboard = () => {
                 <Grid item xs={4}>
                   <CheckCircleIcon
                     style={{
-                      fontSize: 100,
+                      fontSize: 50,
                       color: "#FFFFFF",
                     }}
                   />
@@ -581,6 +610,7 @@ const Dashboard = () => {
                     <Typography
                       component="h1"
                       variant="h4"
+                      style={{textAlign: "center" }}
                     >
                       {GetContacts(true)}
                     </Typography>
@@ -589,7 +619,7 @@ const Dashboard = () => {
                 <Grid item xs={4}>
                   <GroupAddIcon
                     style={{
-                      fontSize: 100,
+                      fontSize: 50,
                       color: "#FFFFFF",
                     }}
                   />
@@ -619,6 +649,7 @@ const Dashboard = () => {
                     <Typography
                       component="h1"
                       variant="h4"
+                      style={{textAlign: "center" }}
                     >
                       {formatTime(counters.avgSupportTime)}
                     </Typography>
@@ -627,7 +658,7 @@ const Dashboard = () => {
                 <Grid item xs={4}>
                   <AccessAlarmIcon
                     style={{
-                      fontSize: 100,
+                      fontSize: 50,
                       color: "#FFFFFF",
                     }}
                   />
@@ -656,6 +687,7 @@ const Dashboard = () => {
                     <Typography
                       component="h1"
                       variant="h4"
+                      style={{textAlign: "center" }}
                     >
                       {formatTime(counters.avgWaitTime)}
                     </Typography>
@@ -664,7 +696,7 @@ const Dashboard = () => {
                 <Grid item xs={4}>
                   <TimerIcon
                     style={{
-                      fontSize: 100,
+                      fontSize: 50,
                       color: "#FFFFFF",
                     }}
                   />
@@ -726,6 +758,13 @@ const Dashboard = () => {
               <ChartsDate />
             </Paper>
           </Grid>
+
+          {/* TOTAL DE CONVERSAS EM GRÁFICO DE PIZZA
+          <Grid item xs={12}>
+                <Paper className={classes.fixedHeightPaper2}>
+                    <PieChart />
+                </Paper>
+          </Grid> */}
 
         </Grid>
       </Container >
