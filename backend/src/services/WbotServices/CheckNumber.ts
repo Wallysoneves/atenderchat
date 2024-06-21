@@ -1,3 +1,4 @@
+import AppError from "../../errors/AppError";
 import GetDefaultWhatsApp from "../../helpers/GetDefaultWhatsApp";
 import { getWbot } from "../../libs/wbot";
 
@@ -19,6 +20,10 @@ const CheckContactNumber = async (
 
   const wbot = getWbot(defaultWhatsapp.id);
   const isNumberExit = await checker(number, wbot);
+  
+  if (!isNumberExit) {
+    throw new AppError("ERR_WPP_NOT_FOUND");
+  }
 
   if (!isNumberExit.exists) {
     throw new Error("ERR_CHECK_NUMBER");

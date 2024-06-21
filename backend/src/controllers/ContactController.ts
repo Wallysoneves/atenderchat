@@ -77,7 +77,7 @@ export const store = async (req: Request, res: Response): Promise<Response> => {
     name: Yup.string().required(),
     number: Yup.string()
       .required()
-      .matches(/^\d+$/, "Invalid number format. Only numbers is allowed.")
+      .matches(/^\d+$/, "Formato de número inválido. Somente números são permitidos.")
   });
 
   try {
@@ -85,7 +85,6 @@ export const store = async (req: Request, res: Response): Promise<Response> => {
   } catch (err: any) {
     throw new AppError(err.message);
   }
-
   await CheckIsValidContact(newContact.number, companyId);
   const validNumber = await CheckContactNumber(newContact.number, companyId);
   const number = validNumber.jid.replace(/\D/g, "");
