@@ -963,6 +963,7 @@ transferTicketModal: {
       "Este color ya está en uso, elige otro.",
     ERR_WAPP_GREETING_REQUIRED:
       "El saludo es obligatorio cuando hay más de una cola.",
+      ERR_WPP_NOT_FOUND: "Este número no tiene WhatsApp.",
       },
     },
   },

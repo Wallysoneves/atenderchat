@@ -404,6 +404,7 @@ const messages = {
 					"This color is already in use, pick another one.",
 				ERR_WAPP_GREETING_REQUIRED:
 					"Greeting message is required if there is more than one queue.",
+				ERR_WPP_NOT_FOUND: "This number does not have WhatsApp.",
 			},
 		},
 	},
