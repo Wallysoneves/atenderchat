@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/Auth/AuthContext";
 import Board from 'react-trello';
 import { toast } from "react-toastify";
 import { i18n } from "../../translate/i18n";
-import { useHistory } from 'react-router-dom';
+import { useHistory,useLocation  } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,10 +27,13 @@ const useStyles = makeStyles(theme => ({
 const Kanban = () => {
   const classes = useStyles();
   const history = useHistory();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
 
   const [tags, setTags] = useState([]);
   const [reloadData, setReloadData] = useState(false);
   const [isInitialLoadComplete, setIsInitialLoadComplete] = useState(false);
+  const origin = queryParams.get('origin');
 
 
   const fetchTags = async () => {
@@ -41,7 +44,7 @@ const Kanban = () => {
       setTags(fetchedTags);
 
       // Fetch tickets after fetching tags
-      await fetchTickets(jsonString);
+      await fetchTickets(jsonString, origin);
     } catch (error) {
       console.log(error);
     }
@@ -61,13 +64,14 @@ const Kanban = () => {
   const { profile, queues } = user;
   const jsonString = user.queues.map(queue => queue.UserQueue.queueId);
 
-  const fetchTickets = async (jsonString) => {
+  const fetchTickets = async (jsonString, origin) => {
     try {
       
       const { data } = await api.get("/ticket/kanban", {
         params: {
           queueIds: JSON.stringify(jsonString),
-          teste: true
+          teste: true,
+          origin: origin
         }
       });
       setTickets(data.tickets);

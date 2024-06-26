@@ -304,8 +304,8 @@ const MainListItems = (props) => {
       />
 	  
 
-	  <ListItemLink
-        to="/kanban"
+      <ListItemLink
+        to="/kanban?origin=fast"
         primary={i18n.t("Fast")}
         icon={<TableChartIcon />}
       />
@@ -315,12 +315,13 @@ const MainListItems = (props) => {
         perform="dashboard:view"
         yes={() => (
           <ListItemLink
-        to="/kanban"
-        primary={i18n.t("Fast Global")}
-        icon={<TableChartIcon />}
+            to="/kanban"
+            primary={i18n.t("Fast Global")}
+            icon={<TableChartIcon />}
           />
         )}
       />
+
 
       <ListItemLink
         to="/quick-messages"

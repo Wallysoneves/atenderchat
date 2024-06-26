@@ -25,6 +25,7 @@ interface Request {
   tags: number[];
   users: number[];
   companyId: number;
+  origin?: string;
 }
 
 interface Response {
@@ -45,7 +46,8 @@ const ListTicketsServiceKanban = async ({
   showAll,
   userId,
   withUnreadMessages,
-  companyId
+  companyId,
+  origin
 }: Request): Promise<Response> => {
   let whereCondition: Filterable["where"] = {
     [Op.or]: [{ userId }, { status: "pending" }],
@@ -215,7 +217,7 @@ const ListTicketsServiceKanban = async ({
 
   const user = await ShowUserService(userId);
 
-  if (user.profile === 'admin') {
+  if (user.profile === 'admin' && !origin) {
     const { count, rows: tickets } = await Ticket.findAndCountAll({
       include: includeCondition,
       distinct: true,
