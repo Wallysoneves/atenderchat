@@ -213,22 +213,44 @@ const ListTicketsServiceKanban = async ({
     companyId
   };
 
-  const { count, rows: tickets } = await Ticket.findAndCountAll({
-    where: whereCondition,
-    include: includeCondition,
-    distinct: true,
-    limit,
-    offset,
-    order: [["updatedAt", "DESC"]],
-    subQuery: false
-  });
-  const hasMore = count > offset + tickets.length;
+  const user = await ShowUserService(userId);
 
-  return {
-    tickets,
-    count,
-    hasMore
-  };
+  if (user.profile === 'admin') {
+    const { count, rows: tickets } = await Ticket.findAndCountAll({
+      include: includeCondition,
+      distinct: true,
+      limit,
+      offset,
+      order: [["updatedAt", "DESC"]],
+      subQuery: false
+    });
+
+    const hasMore = count > offset + tickets.length;
+
+    return {
+      tickets,
+      count,
+      hasMore
+    };
+  } else {
+    const { count, rows: tickets } = await Ticket.findAndCountAll({
+      where: whereCondition,
+      include: includeCondition,
+      distinct: true,
+      limit,
+      offset,
+      order: [["updatedAt", "DESC"]],
+      subQuery: false
+    });
+
+    const hasMore = count > offset + tickets.length;
+
+    return {
+      tickets,
+      count,
+      hasMore
+    };
+  }
 };
 
 export default ListTicketsServiceKanban;
