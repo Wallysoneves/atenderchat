@@ -308,7 +308,7 @@ const MainListItems = (props) => {
       <ListItemLink
         to="/kanban/individual?origin=fast"
         primary={i18n.t("Fast")}
-        icon={<ViewComfyIcon />}
+        icon={<TableChartIcon />}
       />
 
       <Can
@@ -318,7 +318,7 @@ const MainListItems = (props) => {
           <ListItemLink
             to="/kanban"
             primary={i18n.t("Fast Global")}
-            icon={<TableChartIcon />}
+            icon={<ViewComfyIcon />}
           />
         )}
       />
