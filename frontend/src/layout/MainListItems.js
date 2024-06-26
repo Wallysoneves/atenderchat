@@ -8,6 +8,7 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import Divider from "@material-ui/core/Divider";
 import { Badge, Collapse, List } from "@material-ui/core";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
+import DashboardIcon from '@material-ui/icons/Dashboard';
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
@@ -302,14 +303,24 @@ const MainListItems = (props) => {
         icon={<WhatsAppIcon />}
       />
 	  
-	{showKanban && (  
+
 	  <ListItemLink
         to="/kanban"
-        primary={i18n.t("Kanban")}
+        primary={i18n.t("Fast")}
         icon={<TableChartIcon />}
       />
-	  )}
 
+      <Can
+        role={user.profile}
+        perform="dashboard:view"
+        yes={() => (
+          <ListItemLink
+        to="/kanban"
+        primary={i18n.t("Fast Global")}
+        icon={<TableChartIcon />}
+          />
+        )}
+      />
 
       <ListItemLink
         to="/quick-messages"
