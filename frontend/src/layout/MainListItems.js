@@ -9,6 +9,7 @@ import Divider from "@material-ui/core/Divider";
 import { Badge, Collapse, List } from "@material-ui/core";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import ViewComfyIcon from '@material-ui/icons/ViewComfy';
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
@@ -305,9 +306,9 @@ const MainListItems = (props) => {
 	  
 
       <ListItemLink
-        to="/kanban?origin=fast"
+        to="/kanban/individual?origin=fast"
         primary={i18n.t("Fast")}
-        icon={<TableChartIcon />}
+        icon={<ViewComfyIcon />}
       />
 
       <Can
