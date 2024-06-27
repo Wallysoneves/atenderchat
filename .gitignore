@@ -4,5 +4,6 @@ backend/.env
 backend/node_modules
 .vscode
 backend/.DS_Store
+frontend/.DS_Store
 
 
