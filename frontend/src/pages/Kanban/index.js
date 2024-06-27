@@ -124,7 +124,7 @@ const Kanban = () => {
         return {
           id: tag.id.toString(),
           title: tag.name,
-          label: tag.id.toString(),
+          label: filteredTickets.length.toString(),
           cards: filteredTickets.map(ticket => ({
             id: ticket.id.toString(),
             label: "Ticket nº " + ticket.id.toString(),
