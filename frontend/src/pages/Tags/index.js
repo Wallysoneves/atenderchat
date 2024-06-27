@@ -254,6 +254,9 @@ return (
                 {i18n.t("tags.table.tickets")}
               </TableCell>
               <TableCell align="center">
+                {i18n.t("tags.table.order")}
+              </TableCell>
+              <TableCell align="center">
                 {i18n.t("tags.table.actions")}
               </TableCell>
             </TableRow>
@@ -275,6 +278,7 @@ return (
                     />
                   </TableCell>
                   <TableCell align="center">{tag.ticketsCount}</TableCell>
+                  <TableCell align="center">{tag.sequence}</TableCell>
                   <TableCell align="center">
                     <IconButton size="small" onClick={() => handleEditTag(tag)}>
                       <EditIcon />

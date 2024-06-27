@@ -49,6 +49,9 @@ class Tag extends Model<Tag> {
 
   @Column
   kanban: number;
+
+  @Column
+  sequence: number;
 }
 
 export default Tag;

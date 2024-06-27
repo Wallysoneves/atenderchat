@@ -358,6 +358,7 @@ const messages = {
         form: {
           name: "Nome",
           color: "Cor",
+          sequence: "Sequência",
         },
         buttons: {
           okAdd: "Adicionar",
@@ -828,6 +829,7 @@ const messages = {
           name: "Nome",
           color: "Cor",
           tickets: "Registros Tagdos",
+          order: "Ordenação",
           actions: "Ações",
         },
         buttons: {

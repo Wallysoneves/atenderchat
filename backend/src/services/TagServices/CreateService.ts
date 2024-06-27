@@ -16,7 +16,7 @@ const CreateService = async ({
   color = "#A4CCCC",
   kanban = 0,
   companyId,
-  sequence
+  sequence = 0
 }: Request): Promise<Tag> => {
   const schema = Yup.object().shape({
     name: Yup.string().required().min(3)

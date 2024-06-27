@@ -198,6 +198,21 @@ const TagModal = ({ open, onClose, tagId, reload }) => {
 										margin="dense"
 									/>
 								</div>
+								<br />
+								<div className={classes.multFieldLine}>
+									<Field
+										type="number"
+										as={TextField}
+										label={i18n.t("tagModal.form.sequence")}
+										name="sequence"
+										error={touched.name && Boolean(errors.name)}
+										helperText={touched.name && errors.name}
+										variant="outlined"
+										margin="dense"
+										onChange={(e) => setTag(prev => ({ ...prev, sequence: e.target.value }))}
+										fullWidth
+									/>
+								</div>
 								{(user.profile === "admin" || user.profile === "supervisor") && (
                                 <>
 								<div className={classes.multFieldLine}>
