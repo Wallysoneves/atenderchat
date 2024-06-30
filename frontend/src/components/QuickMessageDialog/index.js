@@ -16,6 +16,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import IconButton from "@material-ui/core/IconButton";
+import Checkbox from "@material-ui/core/Checkbox"; // Importação do Checkbox
+import FormControlLabel from "@material-ui/core/FormControlLabel"; // Importação do FormControlLabel
 import { i18n } from "../../translate/i18n";
 import { head } from "lodash";
 import api from "../../services/api";
@@ -71,7 +73,8 @@ const useStyles = makeStyles((theme) => ({
 
 const QuickeMessageSchema = Yup.object().shape({
     shortcode: Yup.string().required("Obrigatório"),
-    //   message: Yup.string().required("Obrigatório"),
+    // message: Yup.string().required("Obrigatório"),
+    // Adicione validação para o checkbox, se necessário
 });
 
 const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
@@ -115,7 +118,6 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
     };
 
     const handleAttachmentFile = (e) => {
-      
         const file = head(e.target.files);
         if (file) {
             setAttachment(file);
@@ -123,8 +125,12 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
     };
 
     const handleSaveQuickeMessage = async (values) => {
-
-        const quickemessageData = { ...values, isMedia: true, mediaPath: attachment ? String(attachment.name).replace(/ /g, "_") : values.mediaPath ? path.basename(values.mediaPath).replace(/ /g, "_") : null };
+        const quickemessageData = {
+            ...values,
+            isMedia: true,
+            mediaPath: attachment ? String(attachment.name).replace(/ /g, "_") : values.mediaPath ? path.basename(values.mediaPath).replace(/ /g, "_") : null,
+            geral: values.geral,
+        };
 
         try {
             if (quickemessageId) {
@@ -149,7 +155,6 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
             }
             toast.success(i18n.t("quickMessages.toasts.success"));
             if (typeof reload == "function") {
-
                 reload();
             }
         } catch (err) {
@@ -172,7 +177,6 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
             }));
             toast.success(i18n.t("quickMessages.toasts.deleted"));
             if (typeof reload == "function") {
-
                 reload();
             }
         }
@@ -282,6 +286,19 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
                                             </IconButton>
                                         </Grid>
                                     )}
+                                    <Grid item>
+                                        <FormControlLabel
+                                            control={
+                                                <Checkbox
+                                                    checked={values.geral} // Valor do checkbox
+                                                    onChange={(e) => setFieldValue('geral', e.target.checked)} // Atualização do estado do checkbox
+                                                    name="Global"
+                                                    color="primary"
+                                                />
+                                            }
+                                            label="Global"
+                                        />
+                                    </Grid>
                                 </Grid>
                             </DialogContent>
                             <DialogActions>
